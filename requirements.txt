@@ -1,4 +1,7 @@
-Flask
-gunicorn
+fastapi
+uvicorn
 selenium
-fake-useragent
+undetected-chromedriver
+pydantic
+python-dotenv
+gunicorn
