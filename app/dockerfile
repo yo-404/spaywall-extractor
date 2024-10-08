@@ -1,18 +1,35 @@
 # Use the official Python image
-FROM python:3.9-slim
+FROM python:3.11-slim
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Install necessary dependencies for Selenium and Chrome
+RUN apt-get update && apt-get install -y \
+    wget \
+    unzip \
+    curl \
+    chromium \
+    chromium-driver \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set the path for Chrome
+ENV CHROME_BIN=/usr/bin/chromium
+ENV CHROME_DRIVER=/usr/bin/chromium-driver
 
 # Set the working directory
 WORKDIR /app
 
-# Copy requirements and install dependencies
+# Copy the requirements file
 COPY requirements.txt .
+
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
 COPY . .
 
-# Expose the port
-EXPOSE 8000
-
-# Command to run the FastAPI app
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Run the FastAPI app using Uvicorn
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
