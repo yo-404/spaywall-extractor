@@ -1,5 +1,6 @@
 fastapi
 uvicorn
-pydantic
-selenium
+gunicorn
 undetected-chromedriver
+selenium
+pydantic
