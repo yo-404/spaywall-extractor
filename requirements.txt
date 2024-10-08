@@ -1,6 +1,0 @@
-fastapi
-uvicorn
-gunicorn
-undetected-chromedriver
-selenium
-pydantic

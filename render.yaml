@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: your-service-name
-    env: docker
-    buildCommand: ""
-    startCommand: ""
-    dockerfilePath: Dockerfile
-    plan: free
