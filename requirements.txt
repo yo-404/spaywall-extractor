@@ -1,7 +1,5 @@
 fastapi
 uvicorn
+pydantic
 selenium
 undetected-chromedriver
-pydantic
-python-dotenv
-gunicorn
